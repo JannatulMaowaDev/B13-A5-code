@@ -49,6 +49,20 @@ function createCard(card) {
       </div>
     </div>`
 };
+//  CARDS RENDER 
+function renderCards(cards) {
+  document.getElementById("issue-count").textContent = `${cards.length} Issues`
+
+  if (cards.length === 0) {
+    cardsContainer.innerHTML = `
+      <div class="col-span-4 items-center justify-center py-20 text-gray-400">
+        <p class="text-sm">No issue found</p>
+      </div>`
+    return;
+  };
+
+  cardsContainer.innerHTML = cards.map(createCard).join('');
+};
 
 // =====LOAD ALL =====
 let allCards = [];
@@ -58,5 +72,5 @@ async function loadCards() {
   const res  = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
   const data = await res.json()
   allCards = data.data;
-  console.log(allCards);
+  renderCards(allCards);
 };
