@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <!-- fonts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  <!-- icon  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- daisy ui -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- style  -->
+  <style>
+    * {
+      font-family: "Geist", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen max-w-md bg-base-200 mx-auto">
+  <div class="logo w-[200px] mx-auto pt-32 flex flex-col items-center justify-center space-y-2">
+    <img src="assets/github-logo.png" alt="">
+    <h2 class=" font-bold">GitHub Issues Tracker</h2>
+    <p class="text-center text-sm">Sign in to manage your issues</p>
+  </div>
+
+  <div class="form pt-10">
+    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow mx-auto rounded-2xl">
+      <div class="card-body">
+        <fieldset class="fieldset">
+          <label class="label text-neutral font-bold">Username</label>
+          <input id="input-username" maxlength="5" minlength="5" type="text" class="input rounded-full bg-base-200"
+            placeholder="Enter Username" />
+          <br>
+          <label class="label text-neutral font-bold">Password</label>
+          <input id="input-password" maxlength="8" type="password" class="input rounded-full bg-base-200"
+            placeholder="Enter Password" />
+
+          <button id="sign-in-btn" class="btn btn-primary rounded-full mt-4">Sign In</button>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script/sign_in.js"></script>
+</body>
+</html>
