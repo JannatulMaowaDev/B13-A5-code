@@ -96,4 +96,28 @@ function filterCards(status) {
       renderCards(filtered)
     }
 };
+
+
+
+//  SEARCH 
+async function handleSearch(searchText) {
+  if (!searchText) {
+    renderCards(allCards)
+    return
+  }
+
+  showSpinner()
+  const res  = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
+  const data = await res.json()
+  renderCards(data.data)
+};
+
+// Search clear 
+document.getElementById("search-input").addEventListener("input", function () {
+  if (this.value === "") {
+    renderCards(allCards)
+  }
+});
+
+
 loadCards();
