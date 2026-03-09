@@ -74,3 +74,26 @@ async function loadCards() {
   allCards = data.data;
   renderCards(allCards);
 };
+
+//  ACTIVE BUTTON 
+function setActiveButton(status) {
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.remove("btn-primary")
+    btn.classList.add("btn-ghost")
+  })
+  document.getElementById(`btn-${status}`).classList.remove("btn-ghost")
+  document.getElementById(`btn-${status}`).classList.add("btn-primary")
+};
+
+//  FILTER 
+function filterCards(status) {
+  setActiveButton(status)
+  showSpinner()
+    if (status === "all") {
+      renderCards(allCards)
+    } else {
+      const filtered = allCards.filter(card => card.status === status)
+      renderCards(filtered)
+    }
+};
+loadCards();
