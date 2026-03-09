@@ -1,0 +1,5 @@
+1.var and let can change the value but const cann't can change the value.for example: const API_URL = "..." ,this url stays the same so we lock it with const.var allows declare the same variable twice.
+2.the spread operator means take everything out and spread it .it allows copy an array,merging two arrays and also can copy an object. when copying an object, it can also override specific values at the same time.
+3.All of them can loop through an array.map() transforms and returns a new array.filter() filters and returns a new array.foreach() just loops but it returns nothing.
+4.an arrow function is just a shorter way to write a function.{} and return are needed only when the function spans multiple lines.
+5.Template literals are just a better way to write string using backticks instead of quotes.
