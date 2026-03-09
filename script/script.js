@@ -12,6 +12,44 @@ function showSpinner() {
     </div>`
 };
 
+//CREATE CARD
+function createCard(card) {
+  const borderColor = card.status === 'open' ? 'border-t-green-500' : 'border-t-purple-600'
+  const statusIcon  = card.status === 'open'
+    ? `<i class="fa-regular fa-circle-dot" style="color: rgb(99,230,190);"></i>`
+    : `<i class="fa-regular fa-circle-check" style="color: rgb(177,151,252);"></i>`
+  const labelsHTML = card.labels.map(label => {
+    const l = labelStyles[label] || { class: "bg-blue-50 text-blue-500 border-blue-200" }
+    return `<span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full border ${l.class}">
+              ${label}
+            </span>`
+  }).join('')
+
+  return `
+    <div 
+         class="bg-white border-t-4 ${borderColor} border border-gray-200
+                rounded-xl p-4 flex flex-col gap-3 shadow-sm cursor-pointer">
+
+                <div class="flex items-center justify-between">
+        <span class="text-base">${statusIcon}</span>
+        <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full">
+          ${card.priority}
+        </span>
+      </div>
+
+      <h3 class="text-sm font-semibold leading-snug">${card.title}</h3>
+      <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">${card.description}</p>
+
+      <div class="flex flex-wrap gap-1.5">${labelsHTML}</div>
+
+      <div class="flex flex-col gap-0.5 pt-2 border-t border-gray-100
+                  text-[11px] text-gray-400 font-mono">
+        <span>#${card.id} by ${card.author}</span>
+        <span>${new Date(card.createdAt).toLocaleDateString()}</span>
+      </div>
+    </div>`
+};
+
 // =====LOAD ALL =====
 let allCards = [];
 
