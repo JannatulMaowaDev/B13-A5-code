@@ -107,7 +107,38 @@
    grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4">
     <!-- card's placeholder -->
   </section>
-
+  <!-- MODAL -->
+   <div id="card-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    style="background: rgba(0,0,0,0.4);">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-auto relative max-h-[90vh] overflow-y-auto">
+      <div class="p-6 pb-3">
+        <h2 id="modal-title" class="text-lg font-bold leading-snug pr-8"></h2>
+        <div class="flex items-center gap-2 mt-2 flex-wrap">
+          <span id="modal-status-badge"></span>
+          <span id="modal-meta" class="text-xs text-gray-400"></span>
+        </div>
+      </div>
+      <div class="px-6 pb-3">
+        <div id="modal-labels" class="flex flex-wrap gap-1.5">
+        </div>
+      </div>
+      <div class="px-6 pb-4">
+        <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed"></p>
+      </div>
+      <div class="mx-6 mb-6 grid grid-cols-2 gap-4 bg-gray-50 rounded-xl p-4">
+        <div>
+          <p class="text-xs text-gray-400 mb-1">Assignee:</p>
+          <p id="modal-assignee" class="text-sm font-semibold"></p>
+        </div>
+        <div>
+          <p class="text-xs text-gray-400 mb-1">Priority:</p><span id="modal-priority"
+            class="text-xs font-bold px-3 py-1 rounded-full"></span>
+        </div>
+      </div>
+       <div class="px-6 pb-6 flex justify-end"><button onclick="closeModal()"
+          class="btn btn-primary btn-sm px-6">Close</button></div>
+    </div>
+  </div>
 
   <script src="script/script.js"></script>
 </body>

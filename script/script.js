@@ -26,7 +26,7 @@ function createCard(card) {
   }).join('')
 
   return `
-    <div 
+    <div onclick="openModal(${card.id})"
          class="bg-white border-t-4 ${borderColor} border border-gray-200
                 rounded-xl p-4 flex flex-col gap-3 shadow-sm cursor-pointer">
 
@@ -64,7 +64,56 @@ function renderCards(cards) {
   cardsContainer.innerHTML = cards.map(createCard).join('');
 };
 
-// =====LOAD ALL =====
+// =====step 10. MODAL =====
+function openModal(id) {
+  const card = allCards.find(c => c.id === id)
+  if (!card) return;
+
+  // title
+  document.getElementById("modal-title").textContent = card.title
+
+  // status badge
+  const isOpen = card.status === 'open'
+  document.getElementById("modal-status-badge").innerHTML = `
+    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full
+                 ${isOpen ? 'bg-green-100 text-green-600' : 'bg-purple-100 text-purple-600'}">
+      ${isOpen ? 'Opened' : 'Closed'}
+    </span>`
+
+  // meta
+  document.getElementById("modal-meta").textContent =
+    `Opened by ${card.author} • ${new Date(card.createdAt).toLocaleDateString()}`
+
+  // labels
+  document.getElementById("modal-labels").innerHTML = card.labels.map(label => {
+    const l = labelStyles[label] || { class: "bg-gray-50 text-gray-500 border-gray-200" }
+    return `<span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full border ${l.class}">${label}</span>`
+  }).join('')
+
+  // description
+  document.getElementById("modal-desc").textContent = card.description
+
+  // assignee
+  document.getElementById("modal-assignee").textContent = card.assignee || card.author
+
+  // priority
+  const p = document.getElementById("modal-priority")
+  p.textContent = card.priority?.toUpperCase()
+  p.className = `text-xs font-bold px-3 py-1 ${card.priority}`
+
+  // show modal
+  const modal = document.getElementById("card-modal")
+  modal.classList.remove("hidden")
+  modal.classList.add("flex")
+}
+
+function closeModal() {
+  const modal = document.getElementById("card-modal")
+  modal.classList.add("hidden")
+  modal.classList.remove("flex")
+}
+
+//  LOAD ALL 
 let allCards = [];
 
 async function loadCards() {
