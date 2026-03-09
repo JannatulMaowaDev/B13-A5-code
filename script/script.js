@@ -11,3 +11,14 @@ function showSpinner() {
       <span class="loading loading-spinner loading-lg text-primary"></span>
     </div>`
 };
+
+// =====LOAD ALL =====
+let allCards = [];
+
+async function loadCards() {
+  showSpinner()
+  const res  = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+  const data = await res.json()
+  allCards = data.data;
+  console.log(allCards);
+};
